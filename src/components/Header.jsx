@@ -8,37 +8,37 @@ const Header = () => {
 
   return (
     <>
-      <header class="flex items-center justify-between bg-sky-800 p-4 text-white">
-        <h1 class="text-xl font-bold">Catholic Student Hub</h1>
+      <header className="flex items-center justify-between bg-sky-800 p-4 text-white">
+        <h1 className="text-xl font-bold">Catholic Student Hub</h1>
 
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
           id="menu-button"
-          class="rounded bg-sky-700 p-2 hover:bg-sky-600 md:hidden"
+          className="rounded bg-sky-700 p-2 hover:bg-sky-600 md:hidden"
         >
           Menu
         </button>
         {/*  Desktop Navigation */}
-        <nav class="hidden md:block">
-          <ul class="flex space-x-4">
+        <nav className="hidden md:block">
+          <ul className="flex space-x-4">
             <li>
-              <a href="#" class="rounded p-2 hover:bg-sky-700">
+              <a href="#" className="rounded p-2 hover:bg-sky-700">
                 Home
               </a>
             </li>
             <li>
-              <a href="#" class="rounded p-2 hover:bg-sky-700">
+              <a href="#" className="rounded p-2 hover:bg-sky-700">
                 Events
               </a>
             </li>
             <li>
-              <a href="#" class="rounded p-2 hover:bg-sky-700">
+              <a href="#" className="rounded p-2 hover:bg-sky-700">
                 About Us
               </a>
             </li>
             <li>
-              <a href="#" class="rounded p-2 hover:bg-sky-700">
+              <a href="#" className="rounded p-2 hover:bg-sky-700">
                 Contact
               </a>
             </li>
@@ -47,7 +47,7 @@ const Header = () => {
       </header>
       {/* Mobile Menu */}
       <div
-        class={`md:hidden ${
+        className={`md:hidden ${
           isMenuOpen ? "block" : "hidden"
         } bg-sky-800 p-4 text-white`}
       >
