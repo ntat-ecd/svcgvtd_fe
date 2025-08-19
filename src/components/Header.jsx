@@ -1,6 +1,6 @@
 import { useState } from "react";
-
-const Header = () => {
+import { Link } from "react-router-dom";
+const Header = ({ authToken, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -21,27 +21,38 @@ const Header = () => {
         </button>
         {/*  Desktop Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex space-x-4">
+          <ul className="flex space-x-4 items-center">
             <li>
-              <a href="#" className="rounded p-2 hover:bg-sky-700">
+              <Link to="/" className="rounded p-2 hover:bg-sky-700">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="rounded p-2 hover:bg-sky-700">
+              <Link to="/" className="rounded p-2 hover:bg-sky-700">
                 Events
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="rounded p-2 hover:bg-sky-700">
+              <Link to="/about" className="rounded p-2 hover:bg-sky-700">
                 About Us
-              </a>
+              </Link>
             </li>
-            <li>
-              <a href="#" className="rounded p-2 hover:bg-sky-700">
-                Contact
-              </a>
-            </li>
+            {authToken ? (
+              <li>
+                <button
+                  onClick={onLogout}
+                  className="rounded p-2 hover:bg-red-700"
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li>
+                <Link to="/login" className="rounded p-2 hover:bg-sky-700">
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
       </header>
@@ -51,18 +62,27 @@ const Header = () => {
           isMenuOpen ? "block" : "hidden"
         } bg-sky-800 p-4 text-white`}
       >
-        <a href="#" className="block p-4 hover:bg-sky-700">
+        <Link to="/" className="block p-4 hover:bg-sky-700">
           Home
-        </a>
-        <a href="#" className="block p-4 hover:bg-sky-700">
+        </Link>
+        <Link to="/" className="block p-4 hover:bg-sky-700">
           Events
-        </a>
-        <a href="#" className="block p-4 hover:bg-sky-700">
+        </Link>
+        <Link to="/about" className="block p-4 hover:bg-sky-700">
           About us
-        </a>
-        <a href="#" className="block p-4 hover:bg-sky-700">
-          Contact
-        </a>
+        </Link>
+        {authToken ? (
+          <button
+            onClick={onLogout}
+            className="block w-full text-left p-4 hover:bg-red-500"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login" className="block p-4 hover:bg-sky-700">
+            Login
+          </Link>
+        )}
       </div>
     </>
   );
