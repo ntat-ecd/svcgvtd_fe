@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 function EventsPage() {
-    console.log("EventsPage component rendered");
+  console.log("EventsPage component rendered");
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,10 +23,10 @@ function EventsPage() {
     };
     fetchEvents();
   }, []);
-const formatDate = (dateString) => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(dateString).toLocaleDateString(undefined, options);   
-}
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   return (
     <main className="p-4 md:p-8">
       <h2 className="text-3xl font-bold text-sky-800 mb-6">Upcoming Events</h2>
@@ -42,7 +42,7 @@ const formatDate = (dateString) => {
               </h3>
               <p className="text-gray-700 mb-4">{event.description}</p>
               <p className="text-gray-500 mb-2">
-                <strong>Date:</strong> {formatDate(event.event_Date)}  
+                <strong>Date:</strong> {formatDate(event.event_date)}
               </p>
               <p className="text-gray-500">
                 <strong>Location:</strong> {event.location}
