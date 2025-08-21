@@ -28,7 +28,7 @@ const Header = ({ authToken, onLogout }) => {
               </Link>
             </li>
             <li>
-              <Link to="/" className="rounded p-2 hover:bg-sky-700">
+              <Link to="/events" className="rounded p-2 hover:bg-sky-700">
                 Events
               </Link>
             </li>
@@ -65,7 +65,7 @@ const Header = ({ authToken, onLogout }) => {
         <Link to="/" className="block p-4 hover:bg-sky-700">
           Home
         </Link>
-        <Link to="/" className="block p-4 hover:bg-sky-700">
+        <Link to="/events" className="block p-4 hover:bg-sky-700">
           Events
         </Link>
         <Link to="/about" className="block p-4 hover:bg-sky-700">

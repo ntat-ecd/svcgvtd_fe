@@ -58,7 +58,9 @@ function App() {
       <div className="bg-gray-100 min-h-screen">
         <Header authToken={authToken} onLogout={handleLogout} />
         <Routes>
-          <Route path="/" element={<EventsPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/events" element={<EventsPage />} />
+
           <Route
             path="/login"
             element={<LoginPage setAuthToken={setAuthToken} />}
