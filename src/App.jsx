@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router";
-import LoginPage from "./components/LoginPage";
-import AdminPage from "./components/AdminPage";
-import EventsPage from "./components/EventsPage";
+import LoginPage from "./pages/LoginPage";
+import AdminPage from "./pages/AdminPage";
+import EventsPage from "./pages/EventsPage";
 import Header from "./components/Header";
-
+import LandingPage from "./pages/LandingPage";
 function PrivateRoute({ children, authToken }) {
   return authToken ? children : <Navigate to="/login" replace />;
 }
