@@ -38,7 +38,7 @@ function AdminPage({ authToken }) {
     setEventId(event.id);
     setTitle(event.title);
     setDescription(event.description);
-    setEventDate(event.event_date);
+    setEventDate(new Date(event.event_date).toISOString().slice(0, 16)); // Format for datetime-local input
     setLocation(event.location);
     setMessage("Editing event. Submit the form to save changes.");
   };
