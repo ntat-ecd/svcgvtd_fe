@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 const Header = () => {
   return (
-    <header className="bg-gray-50">
+    <header className="bg-violet-50">
       {/* Optional Top Banner from template */}
       <div className="bg-rose-900 text-center text-white text-sm py-1">
         <span>
@@ -13,12 +13,12 @@ const Header = () => {
         </span>
       </div>
 
-      <nav className="container mx-auto px-6 py-1 flex justify-between items-center">
+      <nav className="container bg-violet-50 mx-auto px-6 py-1 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
           <img src={logo} alt="SVCG VungThuDuc Logo" className="h-18 w-auto" />
           <span className="text-sm font-bold text-rose-900">
-            Catholic Students of Thu Duc Region
+            CATHOLIC STUDENTS OF THU DUC REGION
           </span>
         </Link>
 
