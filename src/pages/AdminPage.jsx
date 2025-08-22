@@ -6,6 +6,7 @@ function AdminPage({ authToken }) {
   const [description, setDescription] = useState("");
   const [event_date, setEventDate] = useState("");
   const [location, setLocation] = useState("");
+  const [thumbnail, setThumbnail] = useState(null);
   const [message, setMessage] = useState(null);
   const [events, setEvents] = useState([]);
 
@@ -32,18 +33,29 @@ function AdminPage({ authToken }) {
     setDescription("");
     setEventDate("");
     setLocation("");
+    setThumbnail(null);
+
+    // A good practice is to also reset the file input visually
+    document.getElementById("thumbnail").value = null;
   };
-  //Handle Edit click
+  //Handle Edit
   const handleEdit = (event) => {
     setEventId(event.id);
     setTitle(event.title);
     setDescription(event.description);
-    setEventDate(new Date(event.event_date).toISOString().slice(0, 16)); // Format for datetime-local input
+    setEventDate(() => {
+      console.log(event.event_date);
+      const date = new Date(event.event_date).toISOString().slice(0, 16);
+      console.log(date);
+      return date;
+    }); // Format for datetime-local input
     setLocation(event.location);
+    setThumbnail(null); // Reset thumbnail to allow re-upload
+    document.getElementById("thumbnail").value = null; // Reset file input
     setMessage("Editing event. Submit the form to save changes.");
   };
 
-  //Handle Delete click
+  //Handle Delete
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this event?")) {
       try {
@@ -64,10 +76,18 @@ function AdminPage({ authToken }) {
       setMessage("Error deleting event. Please try again.");
     }
   };
-  //Handle form submission
+  //Handle Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const eventData = { title, description, event_date, location };
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("event_date", event_date);
+    formData.append("location", location);
+    if (thumbnail) {
+      formData.append("thumbnail", thumbnail || new Blob());
+    }
+
     const method = eventId ? "PUT" : "POST";
     const url = eventId
       ? `http://localhost:3000/api/events/${eventId}`
@@ -75,21 +95,23 @@ function AdminPage({ authToken }) {
     setMessage("Submitting event data...");
     try {
       const response = await fetch(url, {
-        method,
+        method: method,
         headers: {
-          "Content-Type": "application/json",
           "x-auth-token": authToken,
         },
-        body: JSON.stringify(eventData),
+        body: formData,
       });
+
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.message || data.error || "Failed to save event");
       }
+  
+      clearForm();
       setMessage(
         `Event ${eventId ? "updated" : "created"} successfully: ${data.title}`
       );
-      clearForm();
       fetchEvents();
     } catch (error) {
       console.error("Error saving event:", error);
@@ -163,6 +185,23 @@ function AdminPage({ authToken }) {
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
+        <div className="mb-4">
+          <label htmlFor="thumbnail" className="block text-gray-700 mb-2">
+            Thumbnail Image
+          </label>
+          <input
+            type="file"
+            id="thumbnail"
+            onChange={(e) => setThumbnail(e.target.files[0])}
+            className="w-full p-2 border border-gray-300 rounded"
+          />
+          {/*a note for editing mode*/}
+          {eventId && (
+            <p className="text-sm text-gray-500 mt-1">
+              Upload a new image to replace the existing one.
+            </p>
+          )}
+        </div>
         <button
           type="submit"
           className="w-full bg-sky-800 text-white p-3 rounded hover:bg-sky-700 transition-colors"
@@ -189,7 +228,8 @@ function AdminPage({ authToken }) {
                 </h4>
                 <p className="text-gray-700 mb-2">{event.description}</p>
                 <p className="text-gray-500 mb-2">
-                  <strong>Date:</strong> {new Date(event.event_date).toLocaleString()}
+                  <strong>Date:</strong>{" "}
+                  {new Date(event.event_date).toLocaleString()}
                 </p>
                 <p className="text-gray-500 mb-4">
                   <strong>Location:</strong> {event.location}
