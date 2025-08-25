@@ -17,7 +17,9 @@ function AdminPage({ authToken }) {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("https://svcgvtd-be.onrender.com/api/events");
+      const response = await fetch(
+        "https://svcgvtd-be.onrender.com/api/events"
+      );
       if (!response.ok) throw new Error("Failed to fetch events");
 
       const data = await response.json();
@@ -55,13 +57,16 @@ function AdminPage({ authToken }) {
       formData.append("thumbnail", thumbnail || new Blob());
     }
     try {
-      const response = await fetch("https://svcgvtd-be.onrender.com/api/events", {
-        method: "POST",
-        headers: {
-          "x-auth-token": authToken,
-        },
-        body: formData,
-      });
+      const response = await fetch(
+        "https://svcgvtd-be.onrender.com/api/events",
+        {
+          method: "POST",
+          headers: {
+            "x-auth-token": authToken,
+          },
+          body: formData,
+        }
+      );
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.message || data.error || "Failed to create event");
@@ -173,7 +178,6 @@ function AdminPage({ authToken }) {
                 type="file"
                 name="thumbnail"
                 id="thumbnail"
-                value={thumbnail}
                 onChange={(e) => setThumbnail(e.target.files[0])}
                 required
                 className="w-full p-2 border border-gray-300 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100"
