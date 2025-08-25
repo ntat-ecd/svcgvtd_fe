@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import heroImage from "../assets/hero-image.jpg";
 const LandingPage = () => {
   return (
     <div className="bg-violet-50">
@@ -25,7 +24,7 @@ const LandingPage = () => {
           {/* RIGHT COL */}
           <div className="flex justify-center">
             <img
-              src={heroImage}
+              src="/hero-image.JPG"
               alt="How're helping"
               className="rounded-lg shadow-2xl w-full max-w-md"
             />
