@@ -35,19 +35,21 @@ const LandingPage = () => {
 
       {/*  STATISTICS BAR  */}
       <section className="bg-rose-800 text-white">
-        <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
-            <p className="text-4xl font-bold">1000+</p>
-            <p className="text-rose-200">STUDENTS SERVED</p>
-          </div>
-          <div>
-            <p className="text-4xl font-bold">15+</p>
-            <p className="text-rose-200">EVENTS PER YEAR</p>
-          </div>
+        <div className="container h-full mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div>
             <p className="text-4xl font-bold">10+</p>
             <p className="text-rose-200">YEARS OF MISSION</p>
           </div>
+          <div>
+            <p className="text-4xl font-bold">1000+</p>
+            <p className="text-rose-200">STUDENTS SERVED</p>
+          </div>
+          
+          <div>
+            <p className="text-4xl font-bold">15+</p>
+            <p className="text-rose-200">EVENTS PER YEAR</p>
+          </div>
+          
         </div>
       </section>
     </div>

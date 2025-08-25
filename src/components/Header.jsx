@@ -18,12 +18,13 @@ const Header = () => {
         <Link to="/" className="flex items-center space-x-3">
           <img src={logo} alt="SVCG VungThuDuc Logo" className="h-18 w-auto" />
           <span className="text-sm font-bold text-rose-900">
-            CATHOLIC STUDENTS OF THU DUC REGION
+            CATHOLIC STUDENTS OF <wbr />
+            THU DUC REGION
           </span>
         </Link>
 
         {/* Navigation Links */}
-        <ul className="hidden md:flex items-center space-x-8">
+        <ul className="hidden md:flex items-center space-x-8 m-7">
           <li>
             <Link to="/" className="text-gray-700 hover:text-rose-900">
               Home
@@ -40,8 +41,11 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="#" className="text-gray-700 hover:text-rose-900">
-              Contact us
+            <Link
+              to="#"
+              className="text-gray-700 hover:text-rose-900 whitespace-nowrap"
+            >
+              About
             </Link>
           </li>
         </ul>
@@ -50,9 +54,9 @@ const Header = () => {
           href="https://fb.com/svcgvungthuduc"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:block bg-rose-900 text-white font-bold py-2 px-6 rounded-md hover:bg-rose-700 transition-colors"
+          className="hidden md:block bg-rose-900 text-white font-bold text-sm py-2 px-6 rounded-md hover:bg-rose-700 transition-colors whitespace-nowrap"
         >
-          JOIN →
+          JOIN
         </a>
 
         {/* for a mobile menu button can be added later */}
