@@ -5,12 +5,11 @@ const Header = () => {
     <header className="bg-violet-50">
       {/* Optional Top Banner from template */}
       <div className="bg-rose-900 text-center text-white text-sm py-1">
+        
         <span>
-          This banner can be used to inform visitors of something important.{" "}
-          <a href="#" className="underline">
-            Learn more
-          </a>
+          Login with "admin@admin.com | test123" to test admin function.{" "}
         </span>
+        <Link to="/admin"><span className="underline">To Admin Page</span></Link>
       </div>
 
       <nav className="container bg-violet-50 mx-auto px-6 py-1 flex justify-between items-center">
