@@ -61,7 +61,7 @@ const Header = () => {
 
         {/* for a mobile menu button can be added later */}
         <div className="md:hidden">
-          <button>{/* Mobile menu icon (e.g., SVG) would go here */}</button>
+          <button>lorem ipsum{/* Mobile menu icon (e.g., SVG) would go here */}</button>
         </div>
       </nav>
     </header>

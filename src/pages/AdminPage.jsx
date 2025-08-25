@@ -17,7 +17,7 @@ function AdminPage({ authToken }) {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/events");
+      const response = await fetch("https://svcgvtd-be.onrender.com/api/events");
       if (!response.ok) throw new Error("Failed to fetch events");
 
       const data = await response.json();
@@ -55,7 +55,7 @@ function AdminPage({ authToken }) {
       formData.append("thumbnail", thumbnail || new Blob());
     }
     try {
-      const response = await fetch("http://localhost:3000/api/events", {
+      const response = await fetch("https://svcgvtd-be.onrender.com/api/events", {
         method: "POST",
         headers: {
           "x-auth-token": authToken,

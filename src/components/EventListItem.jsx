@@ -9,7 +9,7 @@ function EventListItem({ event, authToken, onEventsChange }) {
   const [formData, setFormData] = useState({
     title: event.title,
     description: event.description,
-    location:event.location,
+    location: event.location,
     event_date: new Date(event.event_date).toISOString().slice(0, 16),
     thumbnail: event.thumbnail_url,
   });
@@ -23,7 +23,7 @@ function EventListItem({ event, authToken, onEventsChange }) {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:3000/api/events/${event.id}`,
+        `https://svcgvtd-be.onrender.com/api/events/${event.id}`,
         {
           method: "PUT",
           headers: {
@@ -43,7 +43,7 @@ function EventListItem({ event, authToken, onEventsChange }) {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this event?")) {
       try {
-        await fetch(`http://localhost:3000/api/events/${event.id}`, {
+        await fetch(`https://svcgvtd-be.onrender.com/api/events/${event.id}`, {
           method: "DELETE",
           headers: { "x-auth-token": authToken },
         });
@@ -120,9 +120,7 @@ function EventListItem({ event, authToken, onEventsChange }) {
           <p className="text-sm text-slate-500">
             {new Date(event.event_date).toLocaleString()}
           </p>
-           <p className="text-sm text-slate-500">
-            {event.location}
-          </p>
+          <p className="text-sm text-slate-500">{event.location}</p>
         </div>
       </div>
       <div className="flex space-x-2">

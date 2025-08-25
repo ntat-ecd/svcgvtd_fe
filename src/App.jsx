@@ -31,7 +31,7 @@ function App() {
         const verifyToken = async () => {
           try {
             const response = await fetch(
-              "http://localhost:3000/api/auth/verify",
+              "https://svcgvtd-be.onrender.com/api/auth/verify",
               {
                 headers: {
                   "x-auth-token": token,

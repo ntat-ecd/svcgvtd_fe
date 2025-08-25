@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CountdownTimer from "../components/CountdownTimer";
 function EventsPage() {
   const [featuredEvent, setFeaturedEvent] = useState(null);
   const [otherEvents, setOtherEvents] = useState([]);
@@ -62,6 +63,7 @@ function EventsPage() {
                 <p className="text-gray-50 mb-4 font-medium">
                   {formatDate(featuredEvent.event_date)}
                 </p>
+                  <CountdownTimer targetDate={featuredEvent.event_date} />
                 <p className="text-slate-200 mb-4 font-medium">
                   {featuredEvent.description}
                 </p>
